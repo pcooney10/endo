@@ -55,6 +55,12 @@ import { makeCompartmentConstructor } from './compartment-shim.js';
 
 /** @typedef {import('../index.js').LockdownOptions} LockdownOptions */
 
+// eslint-disable-next-line no-restricted-globals
+const VALUE_OF_DISABLED_SYM = Symbol('valueOf disabled');
+
+// eslint-disable-next-line no-extend-native, no-restricted-globals
+Object.prototype.valueOf = () => VALUE_OF_DISABLED_SYM;
+
 const { Fail, details: d, quote: q } = assert;
 
 /** @type {Error=} */
